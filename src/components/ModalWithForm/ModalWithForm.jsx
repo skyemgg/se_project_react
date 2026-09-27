@@ -11,7 +11,7 @@ function ModalWithForm({ childern, buttonText, title, activeModal, onClose }) {
           CLOSE
         </button>
         <form className="modal__form">
-          {Childern}
+          {CFhildern}
           <button className="modal__submit" type="submit">
             {buttonText}
           </button>

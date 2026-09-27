@@ -8,7 +8,7 @@ import ItemModle from "../ItemModal/ItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ type: "hot" });
-  const [activeModal, setActiveModal] = useState("");
+  const [activeModal, setActiveModal] = useState("preview");
   const [selectedCard, setSelectedCard] = useState({});
 
   const handleCardClick = (card) => {
@@ -28,7 +28,7 @@ function App() {
     <div className="page">
       <div className="page__content">
         <Header handleAddClick={setActiveModal} />
-        <Main weatherData={weatherData} onAddButtonClick={setActiveModal} />
+        <Main weatherData={weatherData} handleCardClick={handleCardClick} />
       </div>
       <ModalWithForm
         buttonText="Add Garment"
@@ -79,7 +79,11 @@ function App() {
           </label>
         </fieldset>
       </ModalWithForm>
-      <ItemModle activeModal={activeModal} card={selectedCard} />
+      <ItemModle
+        activeModal={activeModal}
+        card={selectedCard}
+        onClose={closeModal}
+      />
     </div>
   );
 }
