@@ -1,14 +1,20 @@
 import { useState } from "react";
 
 import "./App.css";
+
 import Header from "../Header/Header";
+
 import Main from "../Main/Main";
+
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
+
 import ItemModle from "../ItemModal/ItemModal";
 
 function App() {
   const [weatherData, setWeatherData] = useState({ type: "hot" });
-  const [activeModal, setActiveModal] = useState("preview");
+
+  const [activeModal, setActiveModal] = useState("");
+
   const [selectedCard, setSelectedCard] = useState({});
 
   const handleCardClick = (card) => {
@@ -27,9 +33,11 @@ function App() {
   return (
     <div className="page">
       <div className="page__content">
-        <Header handleAddClick={setActiveModal} />
+        <Header handleAddClick={handleAddClick} />
+
         <Main weatherData={weatherData} handleCardClick={handleCardClick} />
       </div>
+
       <ModalWithForm
         buttonText="Add Garment"
         title="New Garment"
@@ -45,6 +53,7 @@ function App() {
             placeholder="Name"
           />
         </label>
+
         <label htmlFor="imageUrl" className="modal__label">
           Image{""}
           <input
@@ -54,6 +63,7 @@ function App() {
             placeholder="Image URL"
           />
         </label>
+
         <fieldset className="modal__radio-buttons">
           <legend className="modal__legend">Select the weather type:</legend>
 
@@ -79,10 +89,11 @@ function App() {
           </label>
         </fieldset>
       </ModalWithForm>
+
       <ItemModle
         activeModal={activeModal}
         card={selectedCard}
-        onClose={closeModal}
+        onClose={closeActiveModal}
       />
     </div>
   );
