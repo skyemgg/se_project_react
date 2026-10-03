@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import "./App.css";
 
@@ -108,7 +108,7 @@ function App() {
       <ItemModle
         activeModal={activeModal}
         card={selectedCard}
-        onClose={closeActiveModal}
+        onClose={closeModal}
       />
     </div>
   );
