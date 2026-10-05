@@ -1,5 +1,5 @@
 import "./ModalWithForm.css";
-import x from "../../assets/x.png";
+import closeIcon from "../../assets/x.png";
 
 function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
   return (
@@ -10,7 +10,7 @@ function ModalWithForm({ children, buttonText, title, activeModal, onClose }) {
         <h2 className="modal__title">{title}</h2>
 
         <button onClick={onClose} type="button" className="modal__close">
-          <img src={x} className="close" />
+          <img src={closeIcon} className="close" />
         </button>
 
         <form className="modal__form">

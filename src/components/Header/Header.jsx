@@ -1,6 +1,6 @@
 import "./Header.css";
 
-import logo from "../../assets/logo.svg";
+import AppLogo from "../../assets/logo.svg";
 
 import avatar from "../../assets/avatar.png";
 
@@ -11,7 +11,7 @@ function Header({ handleAddClick, weatherData }) {
   });
   return (
     <header className="header">
-      <img src={logo} className="header__logo" />
+      <img src={AppLogo} className="header__logo" />
 
       <p className="header__date-and-location">
         {currentDate}, {weatherData.city}

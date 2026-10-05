@@ -1,6 +1,6 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This project is a personalized Weather-Based Wardrobe application that suggests appropiate clothing items based on real-time weather data. The app integrates a third-party Weather API to fetch current conditions and filters a curated list of garments to help users dress according to the temperature and weather type.
 
 Currently, two official plugins are available:
 
