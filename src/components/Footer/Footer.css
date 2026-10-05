@@ -1,0 +1,19 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  padding: 10px 20px;
+  margin-top: 40px;
+}
+
+.footer__name {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.footer__year {
+  margin: 0;
+  font-size: 14px;
+  color: #333;
+}

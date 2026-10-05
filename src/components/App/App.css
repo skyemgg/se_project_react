@@ -7,3 +7,15 @@
   margin: 0 auto;
   padding: 0 20px;
 }
+
+.modal__label {
+  margin-top: 12px;
+}
+
+.modal__label-name {
+  padding-bottom: 24px;
+}
+
+.modal__label-image {
+  margin-top: 12px;
+}
