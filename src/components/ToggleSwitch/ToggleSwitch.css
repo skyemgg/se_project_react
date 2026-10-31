@@ -6,8 +6,8 @@
   cursor: pointer;
   overflow: hidden;
   position: relative;
-  left: 645px;
-  background-color: white;
+  display: flex;
+  left: 650px;
 }
 
 .toggle-switch__checkbox {
