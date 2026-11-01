@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { defaultClothingItems } from "../../utils/constants";
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 
@@ -7,7 +7,7 @@ import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
-import ItemModle from "../ItemModal/ItemModal";
+import ItemModal from "../ItemModal/ItemModal";
 import { coordinates, apiKey } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
@@ -39,9 +39,19 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const closeModal = () => {
-    setActiveModal("");
+  const onAddItem = (inputValues) => {
+    const newCardData = {
+      name: inputValues.name,
+      link: inputValues.link,
+      weather: inputValues.weatherType,
+    };
+    setClothingItems([...clothingItems, newCardData]);
+    closeModal();
   };
+
+  const closeModal = useCallback(() => {
+    setActiveModal("");
+  }, []);
 
   useEffect(() => {
     getWeather(coordinates, apiKey)
@@ -88,9 +98,10 @@ function App() {
         <AddItemModal
           isOpen={activeModal === "add-garment"}
           onClose={closeModal}
+          onAddItem={onAddItem}
         />
 
-        <ItemModle
+        <ItemModal
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeModal}
