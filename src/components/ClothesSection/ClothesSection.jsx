@@ -1,4 +1,4 @@
-/*import "ClothesSection.css";*/
+import "ClothesSection.css";
 
 export default function ClothesSection({
   clothingItems,
