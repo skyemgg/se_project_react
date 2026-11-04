@@ -1,18 +1,20 @@
 import { useState, useEffect, useCallback } from "react";
-import { defaultClothingItems } from "../../utils/constants";
-import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import { Route, Routes } from "react-router-dom";
 
+import { getWeather, filterWeatherData } from "../../utils/weatherApi";
+import { coordinates, apiKey } from "../../utils/constants";
+import { getItems, addItem, removeItem } from "../../utils/app.js";
 import "./App.css";
+import Profile from "../Profile/Profile";
 import Header from "../Header/Header";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import ItemModal from "../ItemModal/ItemModal";
-import { coordinates, apiKey } from "../../utils/constants";
 import AddItemModal from "../AddItemModal/AddItemModal";
 
 function App() {
-  const [clothingItems, setClothingItems] = useState(defaultClothingItems);
+  const [clothingItems, setClothingItems] = useState([]);
 
   const [weatherData, setWeatherData] = useState({
     type: "",
@@ -40,12 +42,11 @@ function App() {
   };
 
   const onAddItem = (inputValues) => {
-    const newCardData = {
-      name: inputValues.name,
-      link: inputValues.link,
-      weather: inputValues.weatherType,
-    };
-    setClothingItems([...clothingItems, newCardData]);
+    addItem(inputValues)
+      .then((data) => {
+        setClothingItems((prevItems) => [...prevItems, inputValues]);
+      })
+      .catch(console.error);
     closeModal();
   };
 
@@ -54,11 +55,16 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getWeather(coordinates, apiKey)
+    getWeather(coordinates, apiKey).then((data) => {
+      const filteredData = filterWeatherData(data);
+      setWeatherData(filteredData);
+    });
+
+    getItems()
       .then((data) => {
-        const filteredData = filterWeatherData(data);
-        setWeatherData(filteredData);
+        setClothingItems(data);
       })
+
       .catch(console.error);
   }, []);
 
@@ -85,15 +91,32 @@ function App() {
         <div className="page__content">
           <Header handleAddClick={handleAddClick} weatherData={weatherData} />
 
-          <Main
-            weatherData={weatherData}
-            handleCardClick={handleCardClick}
-            clothingItems={clothingItems}
-            setClothingItems={setClothingItems}
-          />
-        </div>
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  weatherData={weatherData}
+                  handleCardClick={handleCardClick}
+                  clothingItems={clothingItems}
+                  setClothingItems={setClothingItems}
+                />
+              }
+            />
+            <Route
+              path="/profile"
+              element={
+                <Profile
+                  onCardClcik={handleCardClick}
+                  clothingItems={clothingItems}
+                  weatherData={weatherData}
+                />
+              }
+            />
+          </Routes>
 
-        <Footer></Footer>
+          <Footer />
+        </div>
 
         <AddItemModal
           isOpen={activeModal === "add-garment"}
