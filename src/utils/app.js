@@ -23,8 +23,8 @@ export const addItem = ({ name, imageUrl, weather }) => {
   }).then(handleServerResponse);
 };
 
-export const removeItem = (itemID) => {
-  return fetch(`${baseUrl}/items/${itemID}`, {
+export const removeItem = (itemid) => {
+  return fetch(`${baseUrl}/items/${itemid}`, {
     method: "DELETE",
     headers,
   }).then(handleServerResponse);

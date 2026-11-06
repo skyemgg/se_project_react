@@ -1,13 +1,3 @@
-.modal__content {
-  background-color: #fff;
-  position: relative;
-  max-width: 496px;
-  box-sizing: border-box;
-  width: 100%;
-  border-radius: 20px;
-  border: 1px;
-}
-
 .modal_image {
   max-width: 100%;
   display: block;
@@ -15,6 +5,8 @@
 
 .modal__content_type_image {
   width: 498px;
+  height: none;
+  padding: none;
   overflow: hidden;
   position: relative;
   border-radius: 12px;
@@ -37,4 +29,15 @@
   font-size: 14px;
   margin: 0;
   color: #777;
+}
+
+.modal__delete {
+  color: #ff4d00;
+  border: none;
+  background-color: white;
+  margin-left: auto;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

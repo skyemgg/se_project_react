@@ -42,12 +42,25 @@ function App() {
   };
 
   const onAddItem = (inputValues) => {
-    addItem(inputValues)
+    return addItem(inputValues)
       .then((data) => {
-        setClothingItems((prevItems) => [...prevItems, inputValues]);
+        setClothingItems((prevItems) => [data, ...prevItems, inputValues]);
+        closeModal();
       })
       .catch(console.error);
-    closeModal();
+  };
+
+  const removeItem = (card) => {
+    if (!card?._id) return;
+
+    return onDeleteItem(card._id)
+      .then(() => {
+        setClothingItems((items) =>
+          items.filter((item) => item._id !== card._id),
+        );
+        closeModal();
+      })
+      .catch(console.error);
   };
 
   const closeModal = useCallback(() => {
@@ -55,10 +68,12 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getWeather(coordinates, apiKey).then((data) => {
-      const filteredData = filterWeatherData(data);
-      setWeatherData(filteredData);
-    });
+    getWeather(coordinates, apiKey)
+      .then((data) => {
+        const filteredData = filterWeatherData(data);
+        setWeatherData(filteredData);
+      })
+      .catch(console.error);
 
     getItems()
       .then((data) => {
@@ -128,6 +143,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeModal}
+          onDeleteItem={removeItem}
         />
       </div>
     </currentTemperatureUnitContext.Provider>
