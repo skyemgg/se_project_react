@@ -15,7 +15,7 @@ function ItemModal({ activeModal, onClose, card, removeItem }) {
           <button
             className="modal__delete"
             type="button"
-            onClick={() => onDeleteItem(card)}
+            onClick={() => removeItem(card)}
           >
             Delete item
           </button>

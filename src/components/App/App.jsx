@@ -44,16 +44,16 @@ function App() {
   const onAddItem = (inputValues) => {
     return addItem(inputValues)
       .then((data) => {
-        setClothingItems((prevItems) => [data, ...prevItems, inputValues]);
+        setClothingItems((prevItems) => [data, ...prevItems]);
         closeModal();
       })
       .catch(console.error);
   };
 
-  const removeItem = (card) => {
+  const handleRemoveItem = (card) => {
     if (!card?._id) return;
 
-    return onDeleteItem(card._id)
+    return removeItem(card._id)
       .then(() => {
         setClothingItems((items) =>
           items.filter((item) => item._id !== card._id),
@@ -122,7 +122,7 @@ function App() {
               path="/profile"
               element={
                 <Profile
-                  onCardClcik={handleCardClick}
+                  onCardClick={handleCardClick}
                   clothingItems={clothingItems}
                   weatherData={weatherData}
                 />
@@ -143,7 +143,7 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeModal}
-          onDeleteItem={removeItem}
+          removeItem={handleRemoveItem}
         />
       </div>
     </currentTemperatureUnitContext.Provider>

@@ -5,6 +5,7 @@ export default function ClothesSection({
   clothingItems,
   onCardClick,
   weatherData,
+  handleAddClick,
 }) {
   const visibleItems = weatherData
     ? clothingItems.filter((item) => item.weather === weatherData.type)
@@ -14,8 +15,9 @@ export default function ClothesSection({
     <div className="clothes-section">
       <div className="clothes-section__row">
         <p className="clothes-sectiion__title">Your items</p>
+
         <button
-          onClick={onCardClick}
+          handleAddClick={handleAddClick}
           type="button"
           className="clothes-section__add-btn"
         >
