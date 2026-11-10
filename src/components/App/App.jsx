@@ -123,8 +123,9 @@ function App() {
               element={
                 <Profile
                   onCardClick={handleCardClick}
-                  clothingItems={clothingItems}
+                  handleAddClick={handleAddClick}
                   weatherData={weatherData}
+                  clothingItems={clothingItems}
                 />
               }
             />

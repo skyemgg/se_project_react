@@ -34,7 +34,12 @@ function Header({ handleAddClick, weatherData }) {
         <div className="header__user-container">
           <p className="header__username">Terrence Tegegne</p>
 
-          <img src={avatar} alt="Terrence Tegegne" className="header__avatar" />
+          <img
+            to="/profile"
+            src={avatar}
+            alt="Terrence Tegegne"
+            className="header__avatar"
+          />
         </div>
       </NavLink>
     </header>

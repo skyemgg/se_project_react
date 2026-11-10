@@ -17,7 +17,7 @@ export default function ClothesSection({
         <p className="clothes-sectiion__title">Your items</p>
 
         <button
-          handleAddClick={handleAddClick}
+          onClick={handleAddClick}
           type="button"
           className="clothes-section__add-btn"
         >
