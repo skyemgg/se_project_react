@@ -1,7 +1,7 @@
 import "./ItemModal.css";
 import closeIcon from "../../assets/X.svg";
 
-function ItemModal({ activeModal, onClose, card, removeItem }) {
+function ItemModal({ activeModal, onClose, card, onDeleteClick }) {
   return (
     <div className={`modal ${activeModal === "preview" ? "modal__open" : ""}`}>
       <div className="modal__content_type_image">
@@ -15,7 +15,7 @@ function ItemModal({ activeModal, onClose, card, removeItem }) {
           <button
             className="modal__delete"
             type="button"
-            onClick={() => removeItem(card)}
+            onClick={onDeleteClick}
           >
             Delete item
           </button>

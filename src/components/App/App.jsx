@@ -12,6 +12,7 @@ import Footer from "../Footer/Footer";
 import currentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 import ItemModal from "../ItemModal/ItemModal";
 import AddItemModal from "../AddItemModal/AddItemModal";
+import DeleteConfirmationModal from "../DeleteConfirmationModal/DeleteConfirmationModal.jsx";
 
 function App() {
   const [clothingItems, setClothingItems] = useState([]);
@@ -48,6 +49,10 @@ function App() {
         closeModal();
       })
       .catch(console.error);
+  };
+
+  const handleOpenDeleteModal = () => {
+    setActiveModal("delete-confirmation");
   };
 
   const handleRemoveItem = (card) => {
@@ -144,7 +149,13 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeModal}
-          removeItem={handleRemoveItem}
+          onDeleteClick={handleOpenDeleteModal}
+        />
+
+        <DeleteConfirmationModal
+          isOpen={activeModal === "delete-confirmation"}
+          onClose={closeModal}
+          onConfirm={() => handleRemoveItem(selectedCard)}
         />
       </div>
     </currentTemperatureUnitContext.Provider>
