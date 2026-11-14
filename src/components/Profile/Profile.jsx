@@ -5,7 +5,6 @@ import SideBar from "../SideBar/SideBar";
 export default function Profile({
   clothingItems,
   handleCardClick,
-  weatherData,
   handleAddClick,
 }) {
   return (
@@ -13,9 +12,8 @@ export default function Profile({
       <SideBar />
       <ClothesSection
         onCardClick={handleCardClick}
-        handleAddClick={handleAddClick}
+        onClick={handleAddClick}
         clothingItems={clothingItems}
-        weatherData={weatherData}
       />
     </section>
   );

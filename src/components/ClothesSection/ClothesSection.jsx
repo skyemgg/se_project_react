@@ -3,18 +3,13 @@ import ItemCard from "../ItemCard/ItemCard";
 
 export default function ClothesSection({
   clothingItems,
-  onCardClick,
-  weatherData,
+  handleCardClick,
   handleAddClick,
 }) {
-  const visibleItems = weatherData
-    ? clothingItems.filter((item) => item.weather === weatherData.type)
-    : clothingItems;
-
   return (
     <div className="clothes-section">
       <div className="clothes-section__row">
-        <p className="clothes-sectiion__title">Your items</p>
+        <p className="clothes-section__title">Your items</p>
 
         <button
           onClick={handleAddClick}
@@ -26,8 +21,8 @@ export default function ClothesSection({
       </div>
 
       <ul className="clothes-section__list">
-        {visibleItems.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={onCardClick} />
+        {clothingItems.map((item) => (
+          <ItemCard key={item._id} item={item} onCardClick={handleCardClick} />
         ))}
       </ul>
     </div>
