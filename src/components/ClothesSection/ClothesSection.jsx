@@ -3,7 +3,7 @@ import ItemCard from "../ItemCard/ItemCard";
 
 export default function ClothesSection({
   clothingItems,
-  handleCardClick,
+  onCardClick,
   handleAddClick,
 }) {
   return (
@@ -22,7 +22,7 @@ export default function ClothesSection({
 
       <ul className="clothes-section__list">
         {clothingItems.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={handleCardClick} />
+          <ItemCard key={item._id} item={item} handleCardClick={onCardClick} />
         ))}
       </ul>
     </div>
