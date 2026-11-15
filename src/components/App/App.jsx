@@ -3,7 +3,7 @@ import { Route, Routes } from "react-router-dom";
 
 import { getWeather, filterWeatherData } from "../../utils/weatherApi";
 import { coordinates, apiKey } from "../../utils/constants";
-import { getItems, addItem, removeItem } from "../../utils/app.js";
+import { getItems, addItem, removeItem } from "../../utils/api.js";
 import "./App.css";
 import Profile from "../Profile/Profile";
 import Header from "../Header/Header";
@@ -42,10 +42,11 @@ function App() {
     setActiveModal("add-garment");
   };
 
-  const onAddItem = (inputValues) => {
+  const onAddItem = (inputValues, resetForm) => {
     return addItem(inputValues)
       .then((data) => {
         setClothingItems((prevItems) => [data, ...prevItems]);
+        resetForm();
         closeModal();
       })
       .catch(console.error);
