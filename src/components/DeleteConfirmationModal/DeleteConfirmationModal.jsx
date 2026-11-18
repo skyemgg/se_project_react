@@ -16,11 +16,7 @@ function DeleteConfirmationModal({ isOpen, onClose, onConfirm }) {
         <form className="modal__form" onSubmit={handleSubmit}>
           <p className="delete__text"> Are you sure you want to delete</p>
           <div className="modal__button">
-            <button
-              type="button"
-              className="delete__confirm-btn"
-              onClick={onConfirm}
-            >
+            <button type="button" className="delete__confirm-btn">
               Yes, delete item
             </button>
             <button

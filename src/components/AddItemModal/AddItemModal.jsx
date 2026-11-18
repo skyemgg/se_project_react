@@ -2,15 +2,16 @@ import { useEffect } from "react";
 import { useForm } from "../../hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 
+const defaultValues = { name: "", imageUrl: "", weather: "" };
+
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
-  const defaultValues = { name: "", imageUrl: "", weatherType: "" };
-  const { values, setValues, handleChange, resetForm } = useForm(defaultValues);
+  const { values, handleChange, resetForm } = useForm(defaultValues);
 
   useEffect(() => {
     if (isOpen) {
-      setValues({ name: "", imageUrl: "", weatherType: "" });
+      resetForm();
     }
-  }, [isOpen, setValues]);
+  }, [isOpen, resetForm]);
 
   function handleSubmit(evt) {
     evt.preventDefault();
@@ -60,10 +61,10 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           <input
             id="hot"
             type="radio"
-            name="weatherType"
+            name="weather"
             value="hot"
             className="modal__radio-input"
-            checked={values.weatherType === "hot"}
+            checked={values.weather === "hot"}
             onChange={handleChange}
             required
           />
@@ -74,10 +75,10 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           <input
             id="warm"
             type="radio"
-            name="weatherType"
+            name="weather"
             value="warm"
             className="modal__radio-input"
-            checked={values.weatherType === "warm"}
+            checked={values.weather === "warm"}
             onChange={handleChange}
           />
           Warm
@@ -87,10 +88,10 @@ const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
           <input
             id="cold"
             type="radio"
-            name="weatherType"
+            name="weather"
             value="cold"
             className="modal__radio-input"
-            checked={values.weatherType === "cold"}
+            checked={values.weather === "cold"}
             onChange={handleChange}
           />
           Cold

@@ -8,15 +8,22 @@
   align-items: center;
 }
 
+.clothes-section__title {
+  font-family: "Cabinet Grotesk", sans-serif;
+  margin-left: 20px;
+}
 .clothes-section__list {
-  display: grid;
   grid-template-columns: repeat(auto-fit, 283px);
   grid-template-rows: repeat(auto-fit, 283px);
   gap: 20px;
-  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+
+  list-style-type: none;
 }
 
 .clothes-section__add-btn {
   margin: 0 20px 0 auto;
   border: none;
+  font-family: "Cabinet Grotesk", sans-serif;
 }

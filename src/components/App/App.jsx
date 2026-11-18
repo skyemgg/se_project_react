@@ -29,6 +29,10 @@ function App() {
   const [selectedCard, setSelectedCard] = useState({});
   const [currentTemperatureUnit, setCurrentTemperatureUnit] = useState("F");
 
+  const closeModal = useCallback(() => {
+    setActiveModal("");
+  }, []);
+
   const handleToggleSwitchChange = () => {
     setCurrentTemperatureUnit(currentTemperatureUnit === "F" ? "C" : "F");
   };
@@ -68,10 +72,6 @@ function App() {
       })
       .catch(console.error);
   };
-
-  const closeModal = useCallback(() => {
-    setActiveModal("");
-  }, []);
 
   useEffect(() => {
     getWeather(coordinates, apiKey)
@@ -120,7 +120,6 @@ function App() {
                   weatherData={weatherData}
                   handleCardClick={handleCardClick}
                   clothingItems={clothingItems}
-                  setClothingItems={setClothingItems}
                 />
               }
             />
@@ -128,9 +127,8 @@ function App() {
               path="/profile"
               element={
                 <Profile
-                  handleCardClick={handleCardClick}
+                  onCardClick={handleCardClick}
                   handleAddClick={handleAddClick}
-                  weatherData={weatherData}
                   clothingItems={clothingItems}
                 />
               }

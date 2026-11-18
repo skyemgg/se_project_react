@@ -10,5 +10,5 @@ export function useForm(defaultValues) {
 
   const resetForm = () => setValues(defaultValues);
 
-  return { values, setValues, handleChange };
+  return { values, setValues, handleChange, resetForm };
 }
