@@ -56,8 +56,9 @@ function App() {
       .catch(console.error);
   };
 
-  const handleOpenDeleteModal = () => {
+  const handleOpenDeleteModal = (card) => {
     setActiveModal("delete-confirmation");
+    setActiveCard(card);
   };
 
   const handleRemoveItem = (card) => {
@@ -154,7 +155,7 @@ function App() {
         <DeleteConfirmationModal
           isOpen={activeModal === "delete-confirmation"}
           onClose={closeModal}
-          onConfirm={() => handleRemoveItem(selectedCard)}
+          onDelete={() => handleRemoveItem(selectedCard)}
         />
       </div>
     </currentTemperatureUnitContext.Provider>
