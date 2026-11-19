@@ -7,12 +7,6 @@ const defaultValues = { name: "", imageUrl: "", weather: "" };
 const AddItemModal = ({ isOpen, onAddItem, onClose }) => {
   const { values, handleChange, resetForm } = useForm(defaultValues);
 
-  useEffect(() => {
-    if (isOpen) {
-      resetForm();
-    }
-  }, [isOpen, resetForm]);
-
   function handleSubmit(evt) {
     evt.preventDefault();
     onAddItem(values, resetForm);
