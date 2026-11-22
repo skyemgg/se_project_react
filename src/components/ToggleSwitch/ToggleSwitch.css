@@ -1,13 +1,15 @@
 .toggle-switch {
   width: 56px;
   height: 28px;
+  flex-shrink: 0;
   border: 2px solid #7e7e7e;
   border-radius: 20px;
   cursor: pointer;
   overflow: hidden;
-  position: relative;
+
   display: flex;
   left: 550px;
+  position: relative;
 }
 
 .toggle-switch__checkbox {

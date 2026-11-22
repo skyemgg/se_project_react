@@ -5,6 +5,7 @@ export default function ClothesSection({
   clothingItems,
   handleCardClick,
   handleAddClick,
+  handleDeleteClick,
 }) {
   return (
     <div className="clothes-section">
@@ -22,7 +23,12 @@ export default function ClothesSection({
 
       <ul className="clothes-section__list">
         {clothingItems.map((item) => (
-          <ItemCard key={item._id} item={item} onCardClick={handleCardClick} />
+          <ItemCard
+            key={item._id}
+            item={item}
+            onCardClick={handleCardClick}
+            onDeleteClick={() => handleDeleteClick(selectedCard)}
+          />
         ))}
       </ul>
     </div>

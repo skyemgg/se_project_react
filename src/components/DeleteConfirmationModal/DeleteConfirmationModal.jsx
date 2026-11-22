@@ -1,7 +1,7 @@
 import closeIon from "../../assets/x.png";
 import "./DeleteConfirmationModal.css";
 
-function DeleteConfirmationModal({ isOpen, onDelete, onClose, onConfirm }) {
+function DeleteConfirmationModal({ isOpen, onClose, onConfirm }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onConfirm();
@@ -19,7 +19,6 @@ function DeleteConfirmationModal({ isOpen, onDelete, onClose, onConfirm }) {
           onSubmit={handleSubmit}
         >
           <p className="delete__text">
-            {" "}
             Are you sure you want to delete this item?
             <br />
             This action is irreversible.
@@ -28,7 +27,7 @@ function DeleteConfirmationModal({ isOpen, onDelete, onClose, onConfirm }) {
             <button
               type="submit"
               className="delete__confirm-btn"
-              onClick={onDelete}
+              onClick={onClose}
             >
               Yes, delete item
             </button>

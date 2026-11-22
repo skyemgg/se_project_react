@@ -57,17 +57,19 @@ function App() {
   };
 
   const handleOpenDeleteModal = (card) => {
+    if (card) {
+      setSelectedCard(card);
+    }
     setActiveModal("delete-confirmation");
-    setActiveCard(card);
   };
 
-  const handleRemoveItem = (card) => {
-    if (!card?._id) return;
+  const handleRemoveItem = () => {
+    if (!selectedCard?._id) return;
 
-    return removeItem(card._id)
+    return removeItem(selectedCard._id)
       .then(() => {
         setClothingItems((items) =>
-          items.filter((item) => item._id !== card._id),
+          items.filter((item) => item._id !== selectedCard._id),
         );
         closeModal();
       })
@@ -131,6 +133,7 @@ function App() {
                   onCardClick={handleCardClick}
                   handleAddClick={handleAddClick}
                   clothingItems={clothingItems}
+                  handleOpenDeleteModal={handleOpenDeleteModal}
                 />
               }
             />
@@ -149,13 +152,13 @@ function App() {
           activeModal={activeModal}
           card={selectedCard}
           onClose={closeModal}
-          onDeleteClick={handleOpenDeleteModal}
+          onDeleteClick={() => handleOpenDeleteModal(selectedCard)}
         />
 
         <DeleteConfirmationModal
           isOpen={activeModal === "delete-confirmation"}
           onClose={closeModal}
-          onDelete={() => handleRemoveItem(selectedCard)}
+          onConfirm={handleRemoveItem}
         />
       </div>
     </currentTemperatureUnitContext.Provider>

@@ -6,6 +6,7 @@ export default function Profile({
   clothingItems,
   onCardClick,
   handleAddClick,
+  handleOpenDeleteModal,
 }) {
   return (
     <section className="profile">
@@ -14,6 +15,7 @@ export default function Profile({
         handleCardClick={onCardClick}
         handleAddClick={handleAddClick}
         clothingItems={clothingItems}
+        handleDeleteClick={handleOpenDeleteModal}
       />
     </section>
   );
